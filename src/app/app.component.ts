@@ -4,14 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <h1>Angular Services</h1>
-
-    <h3>App component</h3>
-    <app-person-edit></app-person-edit>
-
-    <button (click)="childVisible = !childVisible">Toggle</button>
-    <app-child *ngIf="childVisible"></app-child>
+    <app-person></app-person>
   `
 })
-export class AppComponent {
-  childVisible = true;
-}
+export class AppComponent {}

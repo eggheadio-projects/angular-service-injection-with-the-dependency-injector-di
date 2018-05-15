@@ -1,23 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
-import { PersonService } from './person.service';
-import { PersonEditComponent } from './person-edit.component';
-import { ChildComponent } from './child.component';
-
+import { LoggerService } from './services/logger.service';
+import { NewLoggerService } from './services/new-logger.service';
+import { PersonComponent } from './person.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PersonEditComponent,
-    ChildComponent
+  declarations: [AppComponent, PersonComponent],
+  imports: [BrowserModule],
+  providers: [
+    NewLoggerService,
+    { provide: LoggerService, useExisting: NewLoggerService }
   ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [PersonService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
