@@ -1,14 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { AppComponent } from './app.component';
-import { PeopleModule } from './people/people.module';
-import { ContactsModule } from './contacts/contacts.module';
+import { PersonService } from './person.service';
+import { PersonEditComponent } from './person-edit.component';
+import { ChildComponent } from './child.component';
+
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, PeopleModule, ContactsModule],
-  providers: [],
+  declarations: [
+    AppComponent,
+    PersonEditComponent,
+    ChildComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [PersonService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
