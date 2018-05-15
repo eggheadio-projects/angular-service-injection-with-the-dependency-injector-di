@@ -2,15 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { PeopleService } from './people.service';
-import { PersonComponent } from './person.component';
-import { WomanComponent } from './woman.component';
-import { WomanService } from './woman.service';
+import { PeopleService, AwesomePeopleService } from './people.service';
+import { PeopleListComponent } from './people-list.component';
 
 @NgModule({
-  declarations: [AppComponent, PersonComponent, WomanComponent],
+  declarations: [AppComponent, PeopleListComponent],
   imports: [BrowserModule],
-  providers: [PeopleService, WomanService],
+  providers: [
+    {
+      provide: PeopleService,
+      useClass: AwesomePeopleService
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

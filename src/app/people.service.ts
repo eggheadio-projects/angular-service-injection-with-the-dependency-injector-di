@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
-export class PeopleService {
-  name = 'Juri';
+export abstract class PeopleService {
+  abstract getPeople();
+}
 
-  getPerson(): any {
-    return {
-      name: this.name,
-      age: 31
-    };
+@Injectable()
+export class AwesomePeopleService {
+  people = [
+    {
+      name: 'Juri'
+    },
+    {
+      name: 'Steffi'
+    }
+  ];
+
+  getPeople() {
+    return this.people;
   }
 }
