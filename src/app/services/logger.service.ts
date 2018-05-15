@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class LoggerService {
-  constructor() {}
+  constructor(private isEnabled: boolean) {}
 
   log(msg: string) {
-    console.log(`Logger: ${msg}`);
+    if (this.isEnabled) {
+      console.log(`Logger: ${msg}`);
+    }
   }
 }

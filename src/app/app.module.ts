@@ -5,21 +5,14 @@ import { AppComponent } from './app.component';
 import { LoggerService } from './services/logger.service';
 import { PersonComponent } from './person.component';
 
-const simpleLogger = {
-  log(msg: string) {
-    console.log(`I'm a simple logger: ${msg}`);
-  }
+const loggerFactory = () => {
+  return new LoggerService(false);
 };
 
 @NgModule({
   declarations: [AppComponent, PersonComponent],
   imports: [BrowserModule],
-  providers: [
-    {
-      provide: LoggerService,
-      useValue: simpleLogger
-    }
-  ],
+  providers: [{ provide: LoggerService, useFactory: loggerFactory }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
