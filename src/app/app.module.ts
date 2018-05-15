@@ -4,15 +4,23 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LoggerService } from './services/logger.service';
 import { PersonComponent } from './person.component';
+import { ConsoleWriter } from './services/console-writer.service';
 
-const loggerFactory = () => {
-  return new LoggerService(false);
+const loggerFactory = (writer: ConsoleWriter) => {
+  return new LoggerService(true, writer);
 };
 
 @NgModule({
   declarations: [AppComponent, PersonComponent],
   imports: [BrowserModule],
-  providers: [{ provide: LoggerService, useFactory: loggerFactory }],
+  providers: [
+    ConsoleWriter,
+    {
+      provide: LoggerService,
+      useFactory: loggerFactory,
+      deps: [ConsoleWriter]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
