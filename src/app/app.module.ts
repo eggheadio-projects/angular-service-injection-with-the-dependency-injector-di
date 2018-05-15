@@ -3,15 +3,22 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoggerService } from './services/logger.service';
-import { NewLoggerService } from './services/new-logger.service';
 import { PersonComponent } from './person.component';
+
+const simpleLogger = {
+  log(msg: string) {
+    console.log(`I'm a simple logger: ${msg}`);
+  }
+};
 
 @NgModule({
   declarations: [AppComponent, PersonComponent],
   imports: [BrowserModule],
   providers: [
-    NewLoggerService,
-    { provide: LoggerService, useExisting: NewLoggerService }
+    {
+      provide: LoggerService,
+      useValue: simpleLogger
+    }
   ],
   bootstrap: [AppComponent]
 })
